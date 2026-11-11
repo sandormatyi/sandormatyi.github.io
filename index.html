@@ -1,8 +1,355 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Hello World</h1>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sándor Mátyás Márton, C++ Software Engineer</title>
+<meta name="description" content="Senior C++ engineer with 12 years across large-scale cross-platform desktop applications and performance-critical real-time systems, 7 years in professional audio. Comfortable owning architecture, leading small teams, and designing around hard real-time constraints.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Sándor Mátyás Márton, C++ Software Engineer">
+<meta property="og:description" content="Senior C++ engineer with 12 years across large-scale cross-platform desktop applications and performance-critical real-time systems, 7 years in professional audio. Comfortable owning architecture, leading small teams, and designing around hard real-time constraints.">
+<meta name="color-scheme" content="light dark">
+<style>
+  @font-face { font-family:"Plex"; src:url(fonts/IBMPlexSans-400.ttf); font-weight:400; font-display:swap; }
+  @font-face { font-family:"Plex"; src:url(fonts/IBMPlexSans-600.ttf); font-weight:600; font-display:swap; }
+  @font-face { font-family:"Plex"; src:url(fonts/IBMPlexSans-700.ttf); font-weight:700; font-display:swap; }
 
-    <p>Nincs itt semmi latnivalo</p>
-    </body>
+  :root {
+    --bg:#ffffff; --ink:#14181c; --accent:#1f3a5f; --muted:#5b656f;
+    --rule:#c3c9cf; --dot:#98a2ac; --card:#f5f7f9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#111417; --ink:#e3e7eb; --accent:#93b4dc; --muted:#9aa4ae;
+      --rule:#2e353c; --dot:#5f6a74; --card:#181c20;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:#111417; --ink:#e3e7eb; --accent:#93b4dc; --muted:#9aa4ae;
+    --rule:#2e353c; --dot:#5f6a74; --card:#181c20;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    background:var(--bg); color:var(--ink);
+    font-family:"Plex", system-ui, sans-serif;
+    font-size:17px; line-height:1.55;
+  }
+  main { max-width:46rem; margin:0 auto; padding:4rem 16px 5rem; }
+
+  a { color:var(--accent); text-underline-offset:0.18em; }
+
+  /* ---------- header ---------- */
+
+  .name {
+    font-size:2.5rem; font-weight:700; letter-spacing:-0.02em;
+    color:var(--accent); line-height:1.08;
+  }
+  .role {
+    font-size:0.88rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--muted); margin-top:0.8rem;
+  }
+  .contact { color:var(--muted); margin-top:0.5rem; }
+  .contact a { color:var(--muted); text-decoration:none; }
+  .contact a:hover { color:var(--accent); text-decoration:underline; }
+
+  .cta {
+    display:inline-block; margin-top:1.4rem; padding:0.55rem 1.1rem;
+    border:1.5px solid var(--accent); border-radius:4px;
+    color:var(--accent); font-weight:600; text-decoration:none;
+  }
+  .cta:hover { background:var(--accent); color:var(--bg); }
+
+  .summary { margin-top:2.2rem; font-size:1.08rem; }
+
+  /* ---------- section headings ---------- */
+
+  h2 {
+    font-size:0.85rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.14em; color:var(--accent);
+    margin-top:3.6rem; padding-bottom:0.4rem;
+    border-bottom:1px solid var(--rule);
+  }
+  h3.sub {
+    font-size:0.8rem; font-weight:600; text-transform:uppercase;
+    letter-spacing:0.12em; color:var(--muted); margin-top:2.6rem;
+  }
+
+  .dates {
+    font-size:0.9rem; color:var(--muted);
+    white-space:nowrap; font-variant-numeric:tabular-nums;
+  }
+  .dot { color:var(--dot); padding:0 0.4em; }
+  .nw { white-space:nowrap; }
+
+  /* ---------- jobs ---------- */
+
+  .job { margin-top:1.8rem; }
+  .job-head, .project-head, .work-head, .row {
+    display:flex; flex-wrap:wrap; justify-content:space-between;
+    align-items:baseline; column-gap:1rem;
+  }
+  .job-title { font-size:1.12rem; font-weight:600; color:var(--accent); }
+  .job-title .org { font-weight:400; }
+  .job-body { margin-top:0.3rem; }
+
+  .projects {
+    margin-top:0.9rem; padding-left:1rem;
+    border-left:2px solid var(--rule);
+  }
+  .project { margin-top:0.9rem; }
+  .project:first-child { margin-top:0; }
+  .project-name { font-weight:600; }
+  .also { margin-top:0.9rem; }
+
+  /* ---------- projects ---------- */
+
+  .works .card { margin-top:2.4rem; }
+  .work-name { font-size:1.3rem; font-weight:600; color:var(--accent); line-height:1.2; }
+  .what { margin-top:0.35rem; }
+  .did { margin-top:0.5rem; }
+  .shot-link { display:block; margin-top:0.9rem; }
+  .shot {
+    display:block; width:100%; height:auto;
+    border:1px solid var(--rule); border-radius:4px; background:var(--card);
+  }
+  .plink { font-size:0.9rem; margin-top:0.45rem; }
+  .plink a { color:var(--muted); }
+
+  .grid {
+    display:grid; grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:2rem 1.5rem; margin-top:1.2rem;
+  }
+  /* screenshots share a baseline even when the descriptions differ in length */
+  .card.small { display:flex; flex-direction:column; }
+  .card.small .shot-link { margin-top:auto; padding-top:0.9rem; }
+  .card.small .work-name { font-size:1.05rem; }
+  .card.small .what { font-size:0.94rem; }
+  .card.small .shot { aspect-ratio:16 / 10; object-fit:contain; }
+  @media (max-width:600px) {
+    .name { font-size:2rem; }
+    .grid { grid-template-columns:1fr; }
+  }
+
+  /* ---------- education, languages ---------- */
+
+  section > .row:first-of-type { margin-top:0.8rem; }
+  .row { margin-top:0.35rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1 class="name">Sándor Mátyás Márton</h1>
+    <p class="role"><span class="nw">C++</span> Software Engineer</p>
+    <p class="contact"><span class="nw">Budapest, Hungary</span><span class="dot">·</span><wbr><span class="nw"><a href="mailto:sandormatyi@gmail.com">sandormatyi@gmail.com</a></span><span class="dot">·</span><wbr><span class="nw"><a href="https://linkedin.com/in/sandormatyi">linkedin.com/in/sandormatyi</a></span><span class="dot">·</span><wbr><span class="nw"><a href="https://github.com/sandormatyi">github.com/sandormatyi</a></span></p>
+    <p><a class="cta" href="sandor-matyas-marton-cv.pdf" download>Download CV (PDF)</a></p>
+  </header>
+
+<section>
+  <p class="summary">Senior <span class="nw">C++</span> engineer with 12 years across large-scale cross-platform desktop applications and performance-critical real-time systems, 7 years in professional audio.<br> Comfortable owning architecture, leading small teams, and designing around hard real-time constraints.
+</p>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">AI-native <span class="nw">C++</span> Developer<span class="org">, Bobcats Coding</span></div>
+      <div class="dates">2026</div>
+    </div>
+    <div class="job-body">Embedded in a development team as an AI-native <span class="nw">C++</span> developer, combining product work with knowledge transfer aimed at raising the team's practical AI maturity.
+</div>
+  </div>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title"><span class="nw">C++</span> Software Developer<span class="org">, self-employed</span></div>
+      <div class="dates">2019-present</div>
+    </div>
+    <div class="job-body">Contracting for international clients in the professional audio industry, directly and through the Unbounded Reality collective. Consistently running multiple concurrent projects, from sole-developer ownership through to <strong>tech lead</strong> and <strong>project management</strong> roles.
+</div>
+
+    <div class="projects">
+      <div class="project">
+        <div class="project-head">
+          <div class="project-name">eMastered PitchPro</div>
+          <div class="dates">2025-2026</div>
+        </div>
+        <div>Sole developer of a real-time pitch correction plugin, from early prototype to shipped product, including requirements gathering and stakeholder alignment.
+</div>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <div class="project-name">VCV Rack</div>
+          <div class="dates">2025</div>
+        </div>
+        <div>Integrated the AAX SDK to bring a virtual modular synthesizer platform to Pro Tools, and replaced the low-level audio driver libraries to add ASIO support. Contributed to and reviewed the designs for the new API architecture, and prepared the Rack SDK for its version 3 release.
+</div>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <div class="project-name">Akai Professional Studio Instrument Collection</div>
+          <div class="dates">2022-2025</div>
+        </div>
+        <div><strong>Tech lead</strong> of a three-developer team on a cloud-based sampler plugin: multisample synth engine, proprietary effects, and a separate admin application managing the cloud sample database.
+</div>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <div class="project-name">Infinite Album</div>
+          <div class="dates">2021-2023</div>
+        </div>
+        <div>Made the audio engine of an AI-driven interactive music system real-time safe, and worked on features across several layers in Python, <span class="nw">C++</span>, C# and JS. Streamlined build and deployment, and set up the basic CI pipelines.
+</div>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <div class="project-name">WalkMix Creator Suite</div>
+          <div class="dates">2020-2026</div>
+        </div>
+        <div>Spatial audio authoring suite supporting Sony 360 Reality Audio, now bundled natively in Pro Tools for higher-tier subscribers. Owned localisation, crash monitoring, speaker layout and audio output mapping, and the standalone Player app.
+</div>
+      </div>
+    </div>
+
+    <div class="also">Also contributed to <strong>Wide Blue Sound Silencer</strong>, <strong>StudioLinked Studio</strong> and <strong>BPB Saturator</strong>.
+</div>
+  </div>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title">Mentor and <span class="nw">C++</span> Lead<span class="org">, Green Fox Academy</span></div>
+      <div class="dates">2018-2020</div>
+    </div>
+    <div class="job-body">Taught roughly 200 students across <span class="nw">C++</span>, embedded programming, machine learning and computer vision, and web development in Java and React. Owned and developed the <span class="nw">C++</span> teaching materials and course syllabus. Tech lead and mentor to several project teams of five.
+</div>
+  </div>
+  <div class="job">
+    <div class="job-head">
+      <div class="job-title"><span class="nw">C++</span> Software Developer<span class="org">, GRAPHISOFT SE</span></div>
+      <div class="dates">2014-2018</div>
+    </div>
+    <div class="job-body">ARCHICAD, a cross-platform architectural BIM CAD application written in C and <span class="nw">C++</span>. Worked across 3D geometry, user interface and data management. The hardest parts were working in a codebase that had been under continuous development for over thirty years, and keeping data consistent across distributed systems.
+</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="works">
+    <article class="card">
+      <div class="work-head">
+        <h3 class="work-name">VCV Rack</h3>
+        <span class="dates">2025</span>
+      </div>
+      <p class="what">A virtual modular synthesizer system.</p>
+      <a class="shot-link" href="https://vcvrack.com/"><img class="shot" src="img/vcv.jpg" alt="Screenshot of VCV Rack" loading="lazy"></a>
+      <p class="plink"><a href="https://vcvrack.com/">vcvrack.com</a></p>
+    </article>
+    <article class="card">
+      <div class="work-head">
+        <h3 class="work-name">Akai Professional Studio Instrument Collection</h3>
+        <span class="dates">2022-2025</span>
+      </div>
+      <p class="what">A cloud-based sampler plugin: a multisample synth engine, InMusic's proprietary effects, and a separate admin application for managing and updating the cloud sample database.
+</p>
+      <a class="shot-link" href="https://www.akaipro.com/studio-instrument-collection/"><img class="shot" src="img/akai.jpg" alt="Screenshot of Akai Professional Studio Instrument Collection" loading="lazy"></a>
+      <p class="plink"><a href="https://www.akaipro.com/studio-instrument-collection/">akaipro.com</a></p>
+    </article>
+    <article class="card">
+      <div class="work-head">
+        <h3 class="work-name">WalkMix Creator Suite</h3>
+        <span class="dates">2020-2026</span>
+      </div>
+      <p class="what">A plugin suite for arranging, mixing and authoring spatial audio in multiple formats, including Sony 360 Reality Audio. Now included natively in Pro Tools for higher-tier subscribers.
+</p>
+      <a class="shot-link" href="https://walkmix.com/"><img class="shot" src="img/walkmix.jpg" alt="Screenshot of WalkMix Creator Suite" loading="lazy"></a>
+      <p class="plink"><a href="https://walkmix.com/">walkmix.com</a></p>
+    </article>
+    <article class="card">
+      <div class="work-head">
+        <h3 class="work-name">eMastered PitchPro</h3>
+        <span class="dates">2025-2026</span>
+      </div>
+      <p class="what">A real-time pitch correction plugin with an advanced harmony and effect engine.
+</p>
+      <a class="shot-link" href="https://emastered.com/pitchpro"><img class="shot" src="img/pitchpro.jpg" alt="Screenshot of eMastered PitchPro" loading="lazy"></a>
+      <p class="plink"><a href="https://emastered.com/pitchpro">emastered.com/pitchpro</a></p>
+    </article>
+    <article class="card">
+      <div class="work-head">
+        <h3 class="work-name">Infinite Album</h3>
+        <span class="dates">2021-2023</span>
+      </div>
+      <p class="what">An ethically trained, fully licensed AI music system for PC gamers and livestreamers. It reacts to in-game events (switching to a minor scale for 30 seconds after a death in CS:GO, for instance) and can be mapped to viewer interaction through the Twitch API.
+</p>
+      <a class="shot-link" href="https://www.infinitealbum.io/"><img class="shot" src="img/infinite.jpg" alt="Screenshot of Infinite Album" loading="lazy"></a>
+      <p class="plink"><a href="https://www.infinitealbum.io/">infinitealbum.io</a></p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h3 class="sub">Also contributed</h3>
+  <div class="grid">
+    <article class="card small">
+      <div class="work-head">
+        <h3 class="work-name">Wide Blue Sound Silencer</h3>
+        <span class="dates">2020-2021</span>
+      </div>
+      <p class="what">Hosts third-party reverbs and other effects, allowing the reverb buffer to be cleaned up or creatively manipulated through audio/MIDI sidechaining and other modulation.
+</p>
+      <a class="shot-link" href="https://www.widebluesound.com/silencer"><img class="shot" src="img/silencer.jpg" alt="Screenshot of Wide Blue Sound Silencer" loading="lazy"></a>
+      <p class="plink"><a href="https://www.widebluesound.com/silencer">widebluesound.com</a></p>
+    </article>
+    <article class="card small">
+      <div class="work-head">
+        <h3 class="work-name">StudioLinked Studio</h3>
+        <span class="dates">2020-2022</span>
+      </div>
+      <p class="what">A cloud-based virtual instrument and loop player, with a comprehensive multisampler, effects, and advanced sequencer and arpeggiator features.
+</p>
+      <a class="shot-link" href="https://studiolinked.com/"><img class="shot" src="img/studiolinked.jpg" alt="Screenshot of StudioLinked Studio" loading="lazy"></a>
+      <p class="plink"><a href="https://studiolinked.com/">studiolinked.com</a></p>
+    </article>
+    <article class="card small">
+      <div class="work-head">
+        <h3 class="work-name">BPB Saturator</h3>
+        <span class="dates">2020</span>
+      </div>
+      <p class="what">A freeware analog-style saturation effect designed by Bedroom Producers Blog. Lightweight, colourful and free to download.
+</p>
+      <a class="shot-link" href="https://bedroomproducersblog.com/free-vst-plugins/bpb-saturator/"><img class="shot" src="img/bpb.jpg" alt="Screenshot of BPB Saturator" loading="lazy"></a>
+      <p class="plink"><a href="https://bedroomproducersblog.com/free-vst-plugins/bpb-saturator/">bedroomproducersblog.com</a></p>
+    </article>
+    <article class="card small">
+      <div class="work-head">
+        <h3 class="work-name">eMastered Atom</h3>
+        <span class="dates">2020</span>
+      </div>
+      <p class="what">A virtual synthesizer with AI features and sonic visualisation.</p>
+      <a class="shot-link" href="https://emastered.com/atom"><img class="shot" src="img/atom.jpg" alt="Screenshot of eMastered Atom" loading="lazy"></a>
+      <p class="plink"><a href="https://emastered.com/atom">emastered.com/atom</a></p>
+    </article>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="row">
+    <div><strong>BSc Software Engineering</strong>, Budapest University of Technology and Economics</div>
+    <div class="dates">2012-2017</div>
+  </div>
+</section>
+
+<section id="languages">
+  <h2>Languages</h2>
+  <div class="row">
+    <div>Hungarian (native)<span class="dot">·</span>English (full professional)<span class="dot">·</span>Russian (limited working)</div>
+    <div class="dates"></div>
+  </div>
+</section>
+</main>
+</body>
 </html>
